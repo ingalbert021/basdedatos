@@ -15,5 +15,15 @@ from Employees
 
 /*tercer ejercicio*/
 
-select EmployeeID, FirstName, LastName, concat(LastName,'@miempresa.com') as email
-from Employees
+select EmployeeID, Firstname LastName, concat(LastName, SUBSTRING(FirstName, 1, 1), '@miempresa.com') as email
+from Employees;
+
+
+/*cuarto ejercicio*/
+SELECT companyName, LEN(CompanyName) as logitud 
+FROM Customers
+order by logitud desc;
+
+
+/*quinto ejercicio*/
+
