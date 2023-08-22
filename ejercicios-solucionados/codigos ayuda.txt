@@ -1,0 +1,155 @@
+/*VIEWS*/
+/*para crear una vista comun es*/
+
+CREATE VIEW nombrenuevo AS 
+SELECT nombre de las columnas quieres mostrar 
+FROM nombre de la tabla ;
+
+SELECT * FROM nombredadoalaview;
+
+---------------------------------------------------------------
+/*si quieres eliminar una vista se utiliza */
+DROP VIEW NOMBREDELAVISTA;
+---------------------------------------------------------------
+
+/*si quieres saber como se hizo la consulta de la view
+puedes utilizar la consulta siguiente y te lo mostrara por pantalla*/
+
+exec sp_helptext nombredadoalaview;
+----------------------------------------------------------------
+/*si quieres impedir que alguien el codigo ENCRIPTALO asi:*/
+
+ALTER VIEW  WITH ENCRYPTION
+AS
+SELECT nombre de las columnas quieres mostrar 
+FROM nombre de la tabla;
+
+--------------------------------------------------------------------------
+/*PARA ORDENAR ACENDENTE O DECENDENTE ES */
+ORDER BY nombre de la columna desc o asc
+
+
+-------------------------------------------------------------
+/*PREDICADORES DE SELECT*/
+
+/*CON DISTINCT OMITES datos repetidos de una consulta la sintaxis es:*/
+
+SELECT DISTINCT columna 
+FROM tabla;
+
+
+/*con TOP devuelves un numero determinado de registros que se encuentran en la parte superior o inferior de un intervalo ejem:
+*/
+SELECT TOP 25 columnas
+from tabla WHERE columna = 2003 
+order by columna desc o asc;
+
+con TOP tambien puedes utilizar porcentajes con la clausula PERCENT la cual te devuelve un % de los registros  ejem:
+
+SELECT TOP 10 PERCENT
+FirstName, LastName
+FROM Students
+WHERE GraduationYear = 2003
+ORDER BY GradePointAverage ASC;
+
+
+/*con DISTINCROW omites basados en registros duplicados completos, no solo campos duplicados (estudiar)*/
+
+SELECT DISTINCTROW CompanyName
+FROM Customers INNER JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID
+ORDER BY CompanyName;
+
+----------------------------------------------------------------
+
+/*como utilizar la clausula WHERE*/
+
+/*con where puedes buscar especificamente en un campo por ejemplo si quieres buscar un campo VACIO O NULL se utiliza 
+(WHERE is null) para traer ese campo a NULL   
+
+para buscar un campo vacio es (WHERE = ' ') 
+
+EJEMPLO CON LAS DOS vamos a traer a aquellos que no han completado el campo empresa. La primera solución es buscar la string vacía y la otra string null:*/
+
+select nombre, empresa from Estudiantes where empresa = ‘ ‘;
+
+select nombre, empresa from Estudiantes where empresa is null;
+
+
+/*CON WHERE se utiliza los SIGNOS Y OPERADORES*/
+< menor que  
+> mayor que  
+= igual 
+!= diferente o desigualdad
+<= menor  o igual
+ >= mayor o igual
+'',  is null, difFecha,  like 
+AND  anda puedes hacer mas de una condicion 
+OR  
+NOT 
+
+/*si quieres consultar mas de una condicion de una lista de registros  puedes utilizar el operador IN de la siguiente forma ejemplo:*/
+
+select orderid, CustomerID, Employeeid, orderdate, shipcountry
+  from orders
+  where EmployeeID in('5', '3', '4') and ShipCountry  = 'venezuela';
+
+
+/*esa consulta busca todos los ID 5,3, 4  de un registro 
+y los consulta por pantalla*/
+---------------------------------------------
+
+/*para buscar una fecha en especifico es*/
+select *
+  from miTabla
+ where Fecha = '20160630';
+
+
+/*para buscar fechas de registros de una fecha a otra se utiliza
+BETWEEN EJEMPLO */
+
+select *
+  from miTabla
+ where Fecha between '20160101' and '20160630';
+
+/*tambien puedes pasarles la HORA ASI */
+
+select *
+  from miTabla
+ where Fecha between '20160101 00:00:00' and '20160630 23:59:59';
+
+
+/*para compliquir condiciones de filas campo fechas 
+puedes utilizar el operador AND ejemplo:*/
+
+select * 
+  from orders
+  where EmployeeID = '3'  and  RequiredDate < ShippedDate
+
+
+
+/*SEGUIR BUSCANDO INFORMACION SOBRE WHERE AND....*/
+----------------------------------------------------------------
+
+/*para buscar por LETRAS  de un registro puedes hacer lo siguiente utilizar la funcion LIKE 'PALABRA%' ejemplo*/
+
+ select companyName, ContactName, Phone, city, Country
+  from Customers
+  where city like 'A%' or country like '%a'
+
+
+/*esta consulta busca las ciudades que comiencen on A o terminen en a */
+
+
+/*para hacer una SUBCONSULA es de la siguiente manera*/
+
+ select productID, productName, categoryID, UnitPrice
+
+ from Products
+
+ where categoryID = (select 
+  categoryID from categories
+  where CategoryID = '1');
+
+/*permite utilizar el resultado de una tabla SELECT en otra consulta SELECT*/
+
