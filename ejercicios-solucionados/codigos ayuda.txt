@@ -179,6 +179,65 @@ SELECT SUBSTRING(FirstName, 1, 1) AS INICIAl
 FROM Employees;
 
 /*esta consulta solo carga el la primera palabra del nombre */
+--------------------------------------------------------------
+
+/*la FUNCION LEN() te permite contar la cantidad de letras o digitos de un registro (LONGITUD) ejemplo*/
+
+SELECT companyName, LEN(CompanyName) as logitud 
+FROM Customers
+order by logitud desc;
+
+/*esta consulta cuenta la longitud de los nombres de la compania*/
+
+----------------------------------------
+
+/*si quieres hacer una consulta remplazando una palabra o oracion por la que decees puedes utilizar REPLACE() de la siguiente manera */
+
+replace(registro, 'palabraoriginal', 'palabranueva') 
+
+
+/*si quieres agregar digitos a la derecha o izquierda a un registro de tipo varchar(numero puedes utilizar right o left ejemplo)*/
+
+select
+right('0000' + convert(varchar(10), productID), 4) as codigo from Products
+
+/*este agregara 4 digitos a la derecha en el ejemplo es 0000*/
+
+--------------------------------------------------------------------------
+
+/*si quieres  consultar un registro de forma de reversa osea de derecha a izquierda puedes utilizar  la funcion REVERSE() ejemplo*/
+
+select 
+ltrim(upper(City)) as ciudad, ltrim(upper(REVERSE(city))) as reverse
+from
+Customers
+
+/*este ejemplo carga el registro city en mayuscula y otro en minuscula pero con las letras alrevez*/
+
+---------------------------------------------------------------------------
+
+/*siquieres generar un numero aleatorio puedes utilizar la FUNCION RAND()
+
+Si quieres hacer una consulta que genere un numero aleatorio del 0 al 100 por ejemplo puedes utilizarlo junto con la funcion FLOOR() ejemplo*/
+
+SELECT ROUND(((100 - 1) * RAND() + 1), 0) as aleatorio, 7 as fijo, SQRT(7) as raiz, POWER(7, 3) as elevado
+
+
+/*si quieres sacar la raiz de un numero utiliza la funcion SQRT(pasale un numero ejempleo)*/
+
+/*si quieres sacar el elevado de un numero utiliza POWER(NUMERO,NUMERO)*/
+
+
+---------------------------------------------------------------
+/*si quieres eliminar consultar un registro sin decimales puedes utilizar la siguiente funcion */
+
+select cast (unitprice as decimal(18,0)) from Products
+
+
+
+
+
+
 
 
 
