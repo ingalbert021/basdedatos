@@ -56,12 +56,20 @@ from
 Products
 
 
-/*9 ejercicio*/
+/*9 ejercicio
+
+no completado*/
 select  ProductID, productName,  max(ReorderLevel) as algo, DIFFERENCE(ReorderLevel, UnitsInStock) as diferencia
 from Products
 group by ProductID, productName, UnitsInStock, ReorderLevel
 
 select difference(ReorderLevel, UnitsInStock)
 from Products
+
+/*ejercicio 10
+hecho! script generado 
+*/
+
+/*ejercicio 11*/
 
 

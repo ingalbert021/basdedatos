@@ -118,6 +118,19 @@ select *
   from miTabla
  where Fecha between '20160101 00:00:00' and '20160630 23:59:59';
 
+/*para mostrar solo algunas partes de una fecha completa existen funciones para sacar solo una parte como ano, dia, mes, hora ejemplo*/
+
+SELECT DATENAME(WEEKDAY, REGISTRODELAFECHA) -> EL DIA EN TEXTO
+SELECT DATENAME(YEAR, REGISTRODELAFECHA) -> SOLO EL ANO 
+SELECT DATENAME(MONTH, REGISTRODELAFECHA) -> SOLO EL MES EN TEXT
+SELECT DATENAME(DAY, REGISTRODELAFECHA) -> EL DIA EN TEXT
+
+YEAR()
+MONTH()
+DAY()
+
+
+----------------------------------------------------------------
 
 /*para compliquir condiciones de filas campo fechas 
 puedes utilizar el operador AND ejemplo:*/
@@ -232,7 +245,39 @@ SELECT ROUND(((100 - 1) * RAND() + 1), 0) as aleatorio, 7 as fijo, SQRT(7) as ra
 /*si quieres eliminar consultar un registro sin decimales puedes utilizar la siguiente funcion */
 
 select cast (unitprice as decimal(18,0)) from Products
+-----------------------------------------------------------
 
+COMO GENERAR UN SCRIPT 
+PASOS
+SELECCIONAMOS LA BASE DE DATOS DONDE QUEREMOS GENERAR EL SCRIPT DE DONDE (OBTENDREMOS LOS DATOS)
+CLIC DERECHO TALKS-> GENERATE SCRIPTS-> 
+ 
+PASO 2
+SELECT NEXT 
+LUEGO SELECCIONAMOS LA CACILLA SELECT SPECIFIC DATABASE OBJECTS
+ LUEGO SELECCIONAMOS LA TABLA QUE OBTENDRAN LOS REGISTROS Y LA SELECCIONAMOS  
+LUEGO NEXT 
+
+PASO 3 
+SELECCIONAMOS AVANZASO EN LA PESTANA SIGUIENTE 
+BUSCAMOS TYPES OF DATA TO SCRIPT (TIPOS DE DATOS DEL SCRIPT)
+SE HABILITARA UNA PESTANA A LA DERECHA SELECCIONAREMOS SCHEMA AND DATA (ESQUEMA Y DATOS)
+
+NOTA:
+Con Esquema y datos le indicamos que se genere el esquema de la tabla y el contenido actual.
+Solo esquema, indica la generación de la tabla (Create table).
+Solo datos, indica que la generación de únicamente el contenido de la tabla (insert into).
+
+
+luego le damos en aceptar -> next y listo se generar un archivo llamado script  en c:/users/documents/script.sql 
+
+
+y por ultimo lo abrimos y veras que dentro abra la creacion de esa tabla con el registro seleccionado 
+
+y podras crearla en otra base de datos sin problemas 
+
+/*enlace de como generar un script*/
+file:///C:/Users/HP/Desktop/sql%20practicas/ejercicios-solucionados/practica%203.pdf
 
 
 
