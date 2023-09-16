@@ -129,7 +129,26 @@ YEAR()
 MONTH()
 DAY()
 
+/*si quieres calcular los anos de diferencia entre de registros con datos de fechas puedes utilizar la funcion 
+DATEDIFF()*/
 
+
+/*ejemplo esta consulta que genera la edad que tenian cuando entraron a la empresa  */
+select EmployeeID, FirstName, lastName, hiredate, BirthDate, datediff(YEAR,  BirthDate, HireDate) as edad from Employees
+
+
+/*si quieres agregarles dias o meses a un registro fecha puedes utilizar la funcion 
+
+DATEADD()
+
+ejemplo sumandole 15 dias a un registro completo*/
+
+select orderid, orderdate, requireddate,  dateadd(day, 15, requireddate) as posiblefecha  from Orders
+where ShippedDate is null
+
+
+/*si quieres sacar la fecha actual utiliza 
+GETDATE*/
 ----------------------------------------------------------------
 
 /*para compliquir condiciones de filas campo fechas 
@@ -279,6 +298,7 @@ y podras crearla en otra base de datos sin problemas
 /*enlace de como generar un script*/
 file:///C:/Users/HP/Desktop/sql%20practicas/ejercicios-solucionados/practica%203.pdf
 
+----------------------------------------------------------
 
 
 

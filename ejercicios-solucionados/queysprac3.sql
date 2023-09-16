@@ -72,4 +72,18 @@ hecho! script generado
 
 /*ejercicio 11*/
 
+select orderid, CustomerID, EmployeeID, YEAR(OrderDate) as yearOfOrder, datename(WEEKDAY, OrderDate) as dayName from Orders 
+where OrderDate between '19960704' and '19971231' and EmployeeID = '6' 
+order by dayName asc
+
+select OrderDate from Orders
+
+/*ejercicio 12*/
+
+select EmployeeID, FirstName, lastName, hiredate, BirthDate, datediff(YEAR,  BirthDate, HireDate) as edad from Employees
+
+
+/*ejercicio 13
+hecho! script generado 
+*/
 
